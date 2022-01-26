@@ -12,20 +12,20 @@ export class TasksService {
         return this.tasks;
     }
 
-    getTaskWithFilters(filterDto: GetTasksFilterDto):Task[]{
-        const {status, search} = filterDto;
+    getTaskWithFilters(filterDto: GetTasksFilterDto): Task[] {
+        const { status, search } = filterDto;
 
         //define a temporary array to hold the result
-        let tasks =this.getAllTask();
-        
+        let tasks = this.getAllTask();
+
         //do something with status
         if (status) {
-            tasks=tasks.filter(task=>task.status === status);
-        } 
+            tasks = tasks.filter(task => task.status === status);
+        }
         //do something with search
-        if(search) {
-            tasks=tasks.filter(task=>{
-                if(task.title.includes(search) || task.description.includes(search)){
+        if (search) {
+            tasks = tasks.filter(task => {
+                if (task.title.includes(search) || task.description.includes(search)) {
                     return true;
                 }
                 return false;
@@ -37,9 +37,9 @@ export class TasksService {
 
     getTaskById(id: string): Task {
         //try to get task
-        const task=this.tasks.find(task=>task.id == id);
+        const task = this.tasks.find(task => task.id == id);
         //if not found , throw an error(404 not found)
-        if(!task){
+        if (!task) {
             throw new NotFoundException(`Task with "${id}" not found`);
         }
         //otherwise, return the found task
@@ -59,9 +59,9 @@ export class TasksService {
     }
 
     deleteTask(id: string) {
-        const TaskId = this.tasks.findIndex(task => task.id === id);
-        console.log("TaskId:" + TaskId);
-        return this.tasks.splice(TaskId, 1)
+        //make generic : for reusablity 
+        const foundTask = this.getTaskById(id);
+        this.tasks=this.tasks.filter(task => task.id !== foundTask.id)
     }
 
     updateTaskStatus(id: string, status: TaskStatus): Task {
