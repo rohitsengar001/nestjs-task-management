@@ -1,0 +1,187 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Task Management",
+    "dateExported": "2022-01-25T19:36:12.359Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "containerId": "",
+            "sortNum": 10000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)"
+                }
+            ],
+            "colId": "2d65a28a-3899-4eb9-8bdc-defa3cd39ce9",
+            "name": "getAllTask",
+            "url": "localhost:3000/tasks/",
+            "method": "GET",
+            "modified": "2022-01-25T19:34:14.707Z",
+            "created": "2022-01-25T12:51:10.326Z",
+            "_id": "fcd57931-9e09-4756-9010-69c164c8fcae",
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "status",
+                        "value": "IN_PROGRESS"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 20000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)"
+                }
+            ],
+            "colId": "2d65a28a-3899-4eb9-8bdc-defa3cd39ce9",
+            "name": "postTask",
+            "url": "http://localhost:3000/tasks",
+            "method": "POST",
+            "modified": "2022-01-25T17:13:56.113Z",
+            "created": "2022-01-25T12:55:35.394Z",
+            "_id": "95e1d9cf-cec2-4864-9793-be95fdb20b32",
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "title",
+                        "value": "patternaded"
+                    },
+                    {
+                        "name": "description",
+                        "value": "folder structure should be aware"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 40000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)"
+                }
+            ],
+            "colId": "2d65a28a-3899-4eb9-8bdc-defa3cd39ce9",
+            "name": "getTaskByID",
+            "url": "http://localhost:3000/tasks/f451231b-fdbe-4110-a7d7-27ff9d6ddb8d",
+            "method": "GET",
+            "modified": "2022-01-25T15:39:13.715Z",
+            "created": "2022-01-25T15:33:25.277Z",
+            "_id": "dc3d614b-0c90-4bc2-b74c-454085e4c4d2",
+            "params": [],
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 50000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)"
+                }
+            ],
+            "colId": "2d65a28a-3899-4eb9-8bdc-defa3cd39ce9",
+            "name": "deleteTask",
+            "url": "http://localhost:3000/tasks/ec23f1e1-c953-43cb-aad2-75d9ba13c428",
+            "method": "DELETE",
+            "modified": "2022-01-25T16:27:17.184Z",
+            "created": "2022-01-25T16:08:51.038Z",
+            "_id": "17a1a797-e4b7-46be-89de-c8c48b9e2fab",
+            "params": [],
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 60000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)"
+                }
+            ],
+            "colId": "2d65a28a-3899-4eb9-8bdc-defa3cd39ce9",
+            "name": "updateTheTask",
+            "url": "http://localhost:3000/tasks/181ecdf3-0045-404b-a9f9-57c9e64664d8/status",
+            "method": "PATCH",
+            "modified": "2022-01-25T19:34:43.557Z",
+            "created": "2022-01-25T17:11:27.593Z",
+            "_id": "b98de326-666c-44fd-a07d-a47c162fc668",
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "status",
+                        "value": "IN_PROGRESS"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 90000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)"
+                }
+            ],
+            "colId": "2d65a28a-3899-4eb9-8bdc-defa3cd39ce9",
+            "name": "getFiltersTasks",
+            "url": "localhost:3000/tasks?status=OPEN",
+            "method": "GET",
+            "modified": "2022-01-25T19:32:05.075Z",
+            "created": "2022-01-25T19:29:34.030Z",
+            "_id": "6e3bccd4-b18b-48e8-a2a4-5318df3ae5ed",
+            "params": [
+                {
+                    "name": "status",
+                    "value": "OPEN",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        }
+    ]
+}
