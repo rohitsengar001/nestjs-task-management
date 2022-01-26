@@ -1,8 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from '@nestjs/common';
-import { Task, TaskStatus } from './task.model';
+import { Task } from './task.model';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto as TDto } from './dto/create-task.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
+import { updateTaskStatusDto } from './dto/update-task-status.dto';
 ;
 
 @Controller('tasks')
@@ -15,9 +16,9 @@ export class TasksController {
     getAllTask(@Query() fitlerDto: GetTasksFilterDto): Task[] {
         //if we've any filters define, call taskService.getTasksWilFilters
         //otherwise, just get all tasks
-        if(Object.keys(fitlerDto).length){
+        if (Object.keys(fitlerDto).length) {
             return this.tasksService.getTaskWithFilters(fitlerDto)
-        }else{
+        } else {
             return this.tasksService.getAllTask();
         }
     }
@@ -41,8 +42,9 @@ export class TasksController {
     //url:c733cee6-03ba-450e-959a-b2bee6e29c4e/status
     @Patch(":id/status")
     updateTaskStatus(@Param('id') id: string,
-        @Body('status') status: TaskStatus
+        @Body() updateTaskStatusDto: updateTaskStatusDto
     ): Task {
-        return this.tasksService.updateTaskStatus(id,status)
+        const { status } = updateTaskStatusDto;
+        return this.tasksService.updateTaskStatus(id, status)
     }
 }
