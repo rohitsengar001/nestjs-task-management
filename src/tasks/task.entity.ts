@@ -7,7 +7,7 @@ export class TaskEntity{
     id:string;
 
     @Column()
-    titile:string
+    title:string
 
     @Column()
     description: string

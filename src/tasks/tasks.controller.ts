@@ -27,15 +27,12 @@ export class TasksController {
     getTaskById(@Param('id') id:string):Promise<TaskEntity>{
         return this.tasksService.getaTaksById(id)
     }
-    // @Get(':id')
-    // getTaskById(@Param('id') id: string): Task {
-    //     return this.tasksService.getTaskById(id)
-    // }
-    // @Post()
-    // createTask(@Body() NewTask: TDto): Task {
-    //     console.log(NewTask);
-    //     return this.tasksService.createTask(NewTask);
-    // }
+   
+    @Post()
+    createTask(@Body() NewTask: TDto): Promise <TaskEntity> {
+        console.log(NewTask);
+        return this.tasksService.createTask(NewTask);
+    }
 
     // @Delete(':id')
     // deleteTask(@Param('id') id: string) {
