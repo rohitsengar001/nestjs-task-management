@@ -34,11 +34,11 @@ export class TasksController {
         return this.tasksService.createTask(NewTask);
     }
 
-    // @Delete(':id')
-    // deleteTask(@Param('id') id: string) {
-    //     console.log("task to be deleted:" + id);
-    //     return this.tasksService.deleteTask(id);
-    // }
+    @Delete(':id')
+    deleteTask(@Param('id') id: string): Promise <void>{
+        console.log("task to be deleted:" + id);
+        return this.tasksService.deleteTask(id);
+    }
 
     // //url:c733cee6-03ba-450e-959a-b2bee6e29c4e/status
     // @Patch(":id/status")
