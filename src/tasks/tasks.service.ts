@@ -45,41 +45,11 @@ export class TasksService {
     }
     return found;
   }
-  // getTaskById(id: string): Task {
-  //     //try to get task
-  //     const task = this.tasks.find(task => task.id == id);
-  //     //if not found , throw an error(404 not found)
-  //     if (!task) {
-  //         throw new NotFoundException(`Task with "${id}" not found`);
-  //     }
-  //     //otherwise, return the found task
-  //     return task;
-  // }
-  async createTask(CreateTask: CreateTaskDto): Promise<TaskEntity>{
-    const { title , description } = CreateTask
-    
-    //create object same as entity
-    const task = this.tasksRepository.create({
-        title,
-        description,
-        status:TaskStatus.OPEN
-    })
-    
-    await this.tasksRepository.save(task) // dbs operation
-    return task;
+  
+  async createTask(createTask: CreateTaskDto): Promise<TaskEntity>{
+    return this.tasksRepository.createTask(createTask);
 }
-  // createTask(NewTask: TDto): Task {
-  //     const { title, description } = NewTask;
-  //     const task: Task = {
-  //         id: uuid(),
-  //         title,
-  //         description,
-  //         status: TaskStatus.OPEN,
-  //     };
-  //     this.tasks.push(task);
-  //     return task;
-  // }
-
+  
   // deleteTask(id: string) {
   //     //make generic : for reusablity
   //     const foundTask = this.getTaskById(id);
