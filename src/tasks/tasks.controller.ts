@@ -13,19 +13,14 @@ export class TasksController {
 
     //*define the handlers
     //*url:localhost:3000/tasks/
-    // @Get()
-    // getAllTask(@Query() fitlerDto: GetTasksFilterDto): Task[] {
-    //     //if we've any filters define, call taskService.getTasksWilFilters
-    //     //otherwise, just get all tasks
-    //     if (Object.keys(fitlerDto).length) {
-    //         return this.tasksService.getTaskWithFilters(fitlerDto)
-    //     } else {
-    //         return this.tasksService.getAllTask();
-    //     }
-    // }
+    @Get()
+    getTasks(@Query() fitlerDto: GetTasksFilterDto):Promise<TaskEntity[]> {
+        return this.tasksService.getTasks(fitlerDto)
+    }
+
     @Get(':id')
     getTaskById(@Param('id') id:string):Promise<TaskEntity>{
-        return this.tasksService.getTaksById(id)
+        return this.tasksService.getTaskById(id)
     }
    
     @Post()
@@ -40,12 +35,12 @@ export class TasksController {
         return this.tasksService.deleteTask(id);
     }
 
-    // //url:c733cee6-03ba-450e-959a-b2bee6e29c4e/status
-    // @Patch(":id/status")
-    // updateTaskStatus(@Param('id') id: string,
-    //     @Body() updateTaskStatusDto: updateTaskStatusDto
-    // ): Task {
-    //     const { status } = updateTaskStatusDto;
-    //     return this.tasksService.updateTaskStatus(id, status)
-    // }
+    //url:c733cee6-03ba-450e-959a-b2bee6e29c4e/status
+    @Patch(":id/status")
+    updateTaskStatus(@Param('id') id: string,
+        @Body() updateTaskStatusDto: updateTaskStatusDto
+    ): Promise<TaskEntity> {
+        const { status } = updateTaskStatusDto;
+        return this.tasksService.updateTaskStatus(id, status)
+    }
 }
