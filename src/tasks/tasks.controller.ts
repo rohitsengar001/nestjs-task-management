@@ -17,10 +17,16 @@ import { TaskEntity } from './task.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/auth/get-user.decorator';
 import { User } from 'src/auth/user.entity';
+import { ConfigService } from '@nestjs/config';
 @Controller('tasks')
 @UseGuards(AuthGuard())
 export class TasksController {
-  constructor(private tasksService: TasksService) {}
+  constructor(
+    private tasksService: TasksService,
+    private configService: ConfigService,
+  ) {
+    console.log(configService.get('TEST_VALUE'));
+  }
 
   //*define the handlers
   //*url:localhost:3000/tasks/
@@ -50,7 +56,7 @@ export class TasksController {
   }
 
   @Delete(':id')
-  deleteTask(@Param('id') id: string ,@GetUser() user: User): Promise<void> {
+  deleteTask(@Param('id') id: string, @GetUser() user: User): Promise<void> {
     console.log('task to be deleted:' + id);
     return this.tasksService.deleteTask(id, user);
   }
