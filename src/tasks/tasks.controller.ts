@@ -25,8 +25,11 @@ export class TasksController {
   //*define the handlers
   //*url:localhost:3000/tasks/
   @Get()
-  getTasks(@Query() fitlerDto: GetTasksFilterDto): Promise<TaskEntity[]> {
-    return this.tasksService.getTasks(fitlerDto);
+  getTasks(
+    @Query() fitlerDto: GetTasksFilterDto,
+    @GetUser() user: User,
+  ): Promise<TaskEntity[]> {
+    return this.tasksService.getTasks(fitlerDto, user);
   }
 
   @Get(':id')
