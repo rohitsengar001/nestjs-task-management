@@ -33,8 +33,11 @@ export class TasksController {
   }
 
   @Get(':id')
-  getTaskById(@Param('id') id: string): Promise<TaskEntity> {
-    return this.tasksService.getTaskById(id);
+  getTaskById(
+    @Param('id') id: string,
+    @GetUser() user: User,
+  ): Promise<TaskEntity> {
+    return this.tasksService.getTaskById(id, user);
   }
 
   @Post()
@@ -53,12 +56,12 @@ export class TasksController {
   }
 
   //url:c733cee6-03ba-450e-959a-b2bee6e29c4e/status
-  @Patch(':id/status')
-  updateTaskStatus(
-    @Param('id') id: string,
-    @Body() updateTaskStatusDto: updateTaskStatusDto,
-  ): Promise<TaskEntity> {
-    const { status } = updateTaskStatusDto;
-    return this.tasksService.updateTaskStatus(id, status);
-  }
+  // @Patch(':id/status')
+  // updateTaskStatus(
+  //   @Param('id') id: string,
+  //   @Body() updateTaskStatusDto: updateTaskStatusDto,
+  // ): Promise<TaskEntity> {
+  //   const { status } = updateTaskStatusDto;
+  //   return this.tasksService.updateTaskStatus(id, status);
+  // }
 }
