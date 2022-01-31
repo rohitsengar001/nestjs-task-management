@@ -9,7 +9,7 @@ async function bootstrap() {
   app.enableCors();// enable to cors in dev mode but it's not prefer for production mode
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new TransformInterceptor)
-  const listening_port=process.env.LISTENING_PORT;
+  const listening_port=process.env.PORT;
   await app.listen(listening_port);
   Logger.log(`Application is listening on port ${listening_port}`)
 }

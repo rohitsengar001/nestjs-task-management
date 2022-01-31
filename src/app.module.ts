@@ -9,13 +9,20 @@ import { configValidationSchema } from './config.schema';
   imports: [
     ConfigModule.forRoot({
       envFilePath: [`.env.stage.${process.env.STAGE}`],
-      validationSchema: configValidationSchema
+      validationSchema: configValidationSchema,
     }),
     TasksModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
+      useFactory: async (configService: ConfigService) => {
+        const isProduction = configService.get('STAGE') === 'prod';
+
+        return {
+          ssl: isProduction,
+          extra: {
+            ssl: isProduction ? { rejectUnauthorized: false } : null,
+          },
           type: 'postgres',
           host: configService.get('DB_HOST'),
           port: configService.get('DB_PORT'),
@@ -24,7 +31,8 @@ import { configValidationSchema } from './config.schema';
           database: configService.get('DB_DATABASE'),
           autoLoadEntities: true,
           synchronize: true, //should not be used in production others it may cause of data lose
-      }),
+        };
+      },
     }),
     AuthModule,
   ],
